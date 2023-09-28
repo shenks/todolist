@@ -1,21 +1,16 @@
-// Import required packages
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
-// Create an Express application
 const app = express();
 
-// Set the view engine to EJS (You can use other view engines like Pug, Handlebars, etc. if preferred)
 app.set("view engine", "ejs");
 
-// Set up Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// Serve static files (e.g., CSS, images) from a 'public' folder (create this folder in your project directory)
+
 app.use(express.static(__dirname + "/public", { maxAge: 0 }));
 
-// Connect to your MongoDB database (replace 'your-database-uri' and 'your-database-name' with your actual MongoDB URI and database name)
 mongoose.connect(
   "mongodb+srv://shenkslee:test123@cluster0.rnbg8kx.mongodb.net/todolistDB",
   {
@@ -36,13 +31,6 @@ const doneItemSchema = new mongoose.Schema({
 });
 
 const DoneItem = mongoose.model("DoneItem", doneItemSchema);
-
-//creating new items
-// const item1 = new Item({
-//   name: "first task",
-// });
-
-// const defaultItems = [item1];
 
 // Define a base route
 app.get("/", (req, res) => {
@@ -96,32 +84,30 @@ app.post("/done", async (req, res) => {
       return res.status(404).send("Item not found.");
     }
 
-    // Create a new "Done" item using the DoneItem model (modify as needed)
+    // Create a new done item using the DoneItem model
     const doneItem = new DoneItem({
       name: item.name,
-      // Add other properties as needed for your "Done" items
     });
-
-    // Save the new "Done" item
+    
     await doneItem.save();
 
     // Delete the original item from the current list
     await Item.findByIdAndRemove(itemId);
 
     console.log("Item moved to Done successfully.");
-    res.redirect("/"); // Redirect to the main page after the item is moved
+    res.redirect("/"); // Redirect to the main page after the item moved
   } catch (err) {
     console.error(err);
-    res.status(500).send("Error moving item to Done."); // Respond with an error status code and message
+    res.status(500).send("Error moving item to Done.");
   }
 });
 
 app.get("/done", async (req, res) => {
   try {
-    // Retrieve the "Done" items from your database (modify as needed)
+    // Retrieve the done items from db
     const doneItems = await DoneItem.find({});
 
-    // Render the "done.ejs" template and pass the "doneItems" variable to it
+    // Render done.ejs template and pass the doneItems variable 
     res.render("done", { newListItems: doneItems });
   } catch (err) {
     console.error(err);
@@ -129,7 +115,6 @@ app.get("/done", async (req, res) => {
   }
 });
 
-// Start the Express server on a specific port (e.g., 3000)
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
