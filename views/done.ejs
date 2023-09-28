@@ -1,0 +1,48 @@
+<%- include('header.ejs') %>
+
+<body>
+  <main>
+    <div class="container mt-5">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+          <h1 class="pt-5">To-do list</h1>
+          <!-- form -->
+          <form class="input-group mb-3" action="/" method="post">
+            <input
+              type="text"
+              name="newItem"
+              class="form-control"
+              placeholder="Add a task!"
+            />
+            <div class="input-group-append">
+              <button class="btn btn-success" type="submit" name="submit">
+                Add
+              </button>
+            </div>
+          </form>
+          <div class="box">
+            <% newListItems.forEach(function(item){ %>
+            <div
+              class="item d-flex justify-content-between align-items-center px-3"
+            >
+              <p><%= item.name %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <form action="/delete" method="post">
+                  <input type="hidden" name="itemId" value="<%= item._id %>" />
+                  <p>
+                    <span>&#9989;</span>
+                  </p>
+                </form>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+<script src="app.js"></script>
+
+<%- include('footer.ejs') %>
