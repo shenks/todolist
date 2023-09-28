@@ -5,3 +5,6 @@ EJS
 Node.JS
 Express
 MongoDB
+
+Run in terminal with:
+nodemon app.js
