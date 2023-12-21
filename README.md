@@ -2,20 +2,21 @@
 
 ### `Preview` 👀
 
-![Shenks' Todo List](asdasdasdsadsad)
+![Shenks' Todo List](https://github.com/shenks/todolist/blob/main/todolist_preview.png)
 
 ### `Build:`🪜
 
 Goal: A todolist allowing users to add items, delete items, move items to "Done" tab
 
 Created using:
-Bootstrap
-EJS
-Node.JS
-Express
-MongoDB
+1. Bootstrap
+2. EJS
+3. Node.JS
+4. Express
+5. MongoDB Cloud
+6. Heroku
 
-### `To Run`
+### `To Run` 🏃‍♂️
 
 1. Clone Repository
 2. Open Terminal
