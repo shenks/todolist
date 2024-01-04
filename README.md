@@ -1,4 +1,4 @@
-### `The live demo has been temporarily halted on Heroku due to account-related adjustments.` 
+### `The live demo has been temporarily halted on Heroku due to account-related adjustments, feel free to run it locally` 
 
 ### `Preview` 👀
 
