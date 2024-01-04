@@ -1,4 +1,4 @@
-### `Check out the live demo` 👉 [here](https://shenks-todolist-dc004d4ee454.herokuapp.com/).
+### `The live demo has been temporarily halted on Heroku due to account-related adjustments.` 
 
 ### `Preview` 👀
 
